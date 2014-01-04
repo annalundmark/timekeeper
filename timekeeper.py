@@ -17,6 +17,13 @@ def main():
     with con:
         cur = con.cursor()
         
+        try:
+            cur.execute("SELECT 1 FROM Timeschedule LIMIT 1;")
+        except: 
+            cur.execute("CREATE TABLE IF NOT EXISTS Timeschedule (Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,Date VARCHAR(20),AbsTimeArrive VARCHAR(30),TimeArrive VARCHAR(20),Weekday VARCHAR(20),AbsTimeLeave VARCHAR(30),TimeLeave VARCHAR(20),TotalWorkTime VARCHAR(20)); ")
+        
+        working = False
+        
         try: 
             cur.execute("SELECT MAX(Id) AS Id FROM Timeschedule")
             most_recent = cur.fetchone()[0]
