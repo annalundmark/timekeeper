@@ -39,7 +39,7 @@ def main():
         
     
         top = Tkinter.Tk()
-        top.geometry("250x150+300+300")
+        top.geometry("250x150+400+300")
     
         startButton = Tkinter.Button(top, text ="Start", state="disabled" if working else "normal" )
         leaveButton = Tkinter.Button(top, text ="Leave", state="normal" if working else "disabled")
@@ -48,11 +48,13 @@ def main():
         leaveButton.config(command = lambda: leaveWork(cur,con, startButton, leaveButton))
         
         exportButton = Tkinter.Button(top, text ="Export data", command = lambda: exportData(cur, con))
+        quitButton = Tkinter.Button(top, text="Quit", command=top.quit)
    
 
         startButton.place(x=40, y=40)
-        leaveButton.place(x=120, y=40)
+        leaveButton.place(x=160, y=40)
         exportButton.place(x=40, y=80)
+        quitButton.place(x=160, y=80)
     
         top.mainloop()
 
